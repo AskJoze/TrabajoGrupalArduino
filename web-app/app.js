@@ -4,7 +4,7 @@ const ctx = document.getElementById('ecgChart').getContext('2d');
 let ecgData = [];
 let lastPeak = Date.now();
 let bpm = 0;
-let firstBpm = null; // Guarda el primer pulso detectado
+let firstBpm = null; 
  
 const chart = new Chart(ctx, {
   type: 'line',
@@ -39,7 +39,7 @@ const socket = new WebSocket("ws://localhost:8080");
  
 socket.onmessage = (event) => {
   let value = parseInt(event.data);
-  console.log("Valor recibido:", event.data, " -> parseado:", value); // debug
+  console.log("Valor recibido:", event.data, " -> parseado:", value); 
 
   if (!isNaN(value)) {
     ecgData.push(value);
@@ -49,11 +49,10 @@ socket.onmessage = (event) => {
     chart.data.datasets[0].data = ecgData;
     chart.update();
  
-    // Detección de latidos
-    if (value > 300) { // umbral bajo para pruebas
+    if (value > 300) {
       let now = Date.now();
       let diff = (now - lastPeak) / 1000;
-      if (diff > 0.5) { // evita falsos positivos
+      if (diff > 0.5) {
         let detectedBpm = Math.round(60 / diff);
 
         if (firstBpm === null) {
@@ -63,19 +62,16 @@ socket.onmessage = (event) => {
           bpm = detectedBpm;
         }
 
-        // Mostrar pulso actual e inicial
         document.getElementById("pulse").textContent =
           firstBpm !== null
             ? `Pulso inicial: ${firstBpm} BPM | Actual: ${bpm} BPM`
             : `Pulso: ${bpm} BPM`;
 
-        // 👇 Agregar al historial
         const pulseList = document.getElementById("pulseList");
         const li = document.createElement("li");
         li.textContent = `${new Date().toLocaleTimeString()} → ${bpm} BPM`;
         pulseList.prepend(li);
 
-        // Limitar historial a 10 elementos
         if (pulseList.children.length > 10) {
           pulseList.removeChild(pulseList.lastChild);
         }
