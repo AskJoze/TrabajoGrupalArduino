@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reporte Clínico de Frecuencia Cardíaca</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Sistema de Monitoreo Cardíaco</h1>
+    
+    <form id="patientForm" class="patient-form">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" required>
+      </div>
+      <div class="form-group">
+        <label for="birthdate">Fecha de Nacimiento:</label>
+        <input type="date" id="birthdate" required>
+      </div>
+      <div class="form-group">
+        <label for="sex">Sexo:</label>
+        <select id="sex" required>
+          <option value="">-- Seleccione --</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="age">Edad:</label>
+        <input type="number" id="age" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="patientId">ID del Paciente:</label>
+        <input type="text" id="patientId" required>
+      </div>
+    </form>
+
+    <div id="monitor">
+      <div id="reportHeader" class="report-section">
+        <h2>CLÍNICA CARDIOVASCULAR</h2>
+        <p>REPORTE DE MONITOREO ECG</p>
+      </div>
+      <div id="patientData" class="report-section"></div>
+      <canvas id="ecgChart" width="600" height="300"></canvas>
+    </div>
+
+    <p id="pulse">Pulso: -- BPM</p>
+
+    <!-- Historial en tiempo real -->
+    <div id="pulseHistory">
+      <h3>Historial de Pulsaciones</h3>
+      <ul id="pulseList"></ul>
+    </div>
+
+    <button id="saveImage">Generar y Subir Reporte Clínico</button>
+    <div id="uploadStatus"></div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

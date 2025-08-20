@@ -1,0 +1,122 @@
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 20px;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #333333;
+  text-align: center;
+}
+
+.patient-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 640px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 1em;
+}
+
+#monitor {
+  background: #f8f8f8;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 640px;
+  margin: 20px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+#reportHeader {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#reportHeader h2 {
+  font-size: 1.5em;
+  margin: 0;
+  color: #000000;
+}
+
+#reportHeader p {
+  font-size: 1.2em;
+  margin: 5px 0;
+  color: #333333;
+  font-style: italic;
+}
+
+#patientData {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+#pulse {
+  font-size: 1.2em;
+  color: #333333;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+button {
+  background: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+}
+
+button:hover {
+  background: #000000;
+}
+
+#uploadStatus {
+  margin-top: 15px;
+  font-size: 1em;
+  color: #333333;
+}
